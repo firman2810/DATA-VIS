@@ -1,0 +1,142 @@
+/* ========================================
+   Background Pattern
+======================================== */
+
+.stApp {
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(76, 175, 80, 0.04),
+        rgba(76, 175, 80, 0.04) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+
+    background-color: #f8faf8;
+}
+
+/* ========================================
+   Main Content Area
+======================================== */
+
+.main .block-container {
+    max-width: 1200px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ========================================
+   Sidebar
+======================================== */
+
+section[data-testid="stSidebar"] {
+    background: linear-gradient(
+        180deg,
+        #16351f 0%,
+        #1b4332 100%
+    );
+}
+
+/* Sidebar text */
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label {
+    color: white !important;
+}
+
+/* ========================================
+   Sidebar Dropdown
+======================================== */
+
+/* Dropdown box */
+
+section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] {
+    background-color: white !important;
+    border: 1px solid #95d5b2 !important;
+    border-radius: 10px;
+}
+
+/* Selected dropdown text */
+
+section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] span {
+    color: #1b4332 !important;
+    font-weight: 600;
+}
+
+/* Dropdown arrow */
+
+section[data-testid="stSidebar"] .stSelectbox svg {
+    fill: #1b4332 !important;
+}
+
+/* ========================================
+   Headings
+======================================== */
+
+h1 {
+    color: #1b4332 !important;
+    font-weight: 800 !important;
+}
+
+h2 {
+    color: #2d6a4f !important;
+    font-weight: 700 !important;
+}
+
+h3 {
+    color: #40916c !important;
+}
+
+/* ========================================
+   Text
+======================================== */
+
+p,
+span,
+li {
+    color: #333333 !important;
+}
+
+[data-testid="stMarkdownContainer"] p {
+    color: #333333 !important;
+}
+
+/* ========================================
+   Charts
+======================================== */
+
+.vega-embed {
+    border-radius: 12px;
+}
+
+/* ========================================
+   Buttons
+======================================== */
+
+.stButton > button {
+    background-color: #2d6a4f;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 15px;
+    transition: 0.2s;
+}
+
+.stButton > button:hover {
+    background-color: #1b4332;
+}
+
+/* ========================================
+   Info Box
+======================================== */
+
+.info-box {
+    background-color: white;
+    border: 1px solid #d8f3dc;
+    padding: 12px;
+    border-radius: 10px;
+    color: #333333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
