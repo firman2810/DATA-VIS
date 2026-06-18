@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Streamlit cache
+.streamlit/
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Mac/Linux
+.DS_Store
+
+# Windows
+Thumbs.db
