@@ -1,37 +1,28 @@
-# pages/mosaic.py
-
 import streamlit as st
-import altair as alt
+import plotly.express as px
 
 def show(df):
 
-    st.header("2.1 Mosaic Plot")
+    st.header("5. Mosaic Style Visualization")
 
-    mosaic_data = (
-        df.groupby(['day', 'sex'])['total_bill']
+    summary = (
+        df.groupby(["Region","Category"])
+        ["Sales"]
         .sum()
         .reset_index()
     )
 
-    chart = (
-        alt.Chart(mosaic_data)
-        .mark_bar()
-        .encode(
-            x='day:N',
-            y=alt.Y(
-                'total_bill:Q',
-                stack='normalize'
-            ),
-            color='sex:N'
-        )
+    fig = px.treemap(
+        summary,
+        path=["Region","Category"],
+        values="Sales",
+        color="Sales",
+        color_continuous_scale="Reds"
     )
 
-    st.altair_chart(
-        chart,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
-    st.write( 
-		"Each bar shows the proportion of total bill contributed by Male vs Female " 
-		"customers for each day. Wider bars indicate more data for that day." 
-	) 
+    st.write("""
+    The treemap provides a mosaic-style view of sales distribution.
+    Larger blocks represent higher sales contributions.
+    """)

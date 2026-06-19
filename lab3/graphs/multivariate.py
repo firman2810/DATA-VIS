@@ -1,46 +1,23 @@
 import streamlit as st
-import altair as alt
+import plotly.express as px
 
 def show(df):
 
-    st.header("2.4 Multivariate Scatter Plot")
+    st.header("3. Multivariate Scatter Plot")
 
-    chart = (
-        alt.Chart(df)
-        .mark_point(
-            filled=True,
-            opacity=0.8
-        )
-        .encode(
-            x='total_bill:Q',
-            y='tip:Q',
-            color='sex:N',
-            shape='smoker:N',
-            size=alt.Size(
-                'size:Q',
-                scale=alt.Scale(
-                    range=[50, 400]
-                )
-            ),
-            tooltip=[
-                'total_bill',
-                'tip',
-                'sex',
-                'smoker',
-                'size',
-                'day'
-            ]
-        )
-        .interactive()
+    fig = px.scatter(
+        df,
+        x="Sales",
+        y="Profit",
+        color="Category",
+        size="Quantity",
+        hover_name="Sub-Category",
+        title="Multivariate Analysis"
     )
 
-    st.altair_chart(
-        chart,
-        use_container_width=True
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
-    st.write( 
-		"Each point encodes 5 variables: x position (bill), y position (tip), " 
-		"color (sex), shape (smoker), and size (group size). " 
-		"Hover over points for full details." 
-	)
+    st.write("""
+    This visualization combines Sales, Profit, Quantity and Category in a single chart.
+    Larger bubbles represent higher quantities sold.
+    """)

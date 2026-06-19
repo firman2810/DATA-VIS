@@ -1,45 +1,25 @@
 import streamlit as st
-import altair as alt
+import plotly.express as px
 
 def show(df):
 
-    st.header("2.2 Trellis Display")
+    st.header("1. Trellis Plot")
 
-    chart = (
-        alt.Chart(df)
-        .mark_circle(
-            size=60,
-            opacity=0.7
-        )
-        .encode(
-            x=alt.X(
-                'total_bill:Q',
-                title='Total Bill ($)'
-            ),
-            y=alt.Y(
-                'tip:Q',
-                title='Tip ($)'
-            ),
-            color=alt.Color(
-                'sex:N',
-                scale=alt.Scale(scheme='set1')
-            ),
-            tooltip=[
-                'total_bill',
-                'tip',
-                'sex',
-                'size'
-            ]
-        )
-        .facet(
-            facet='day:N',
-            columns=2
-        )
+    fig = px.scatter(
+        df,
+        x="Sales",
+        y="Profit",
+        color="Category",
+        facet_col="Region",
+        hover_data=["Sub-Category"],
+        title="Sales vs Profit by Region"
     )
 
-    st.altair_chart(chart, use_container_width=True)
+    fig.update_traces(marker=dict(size=8))
 
-    st.write(
-        "Each panel shows the relationship between total bill and tip for one day. "
-            "Notice how the pattern changes across days." 
-        )
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.write("""
+    The trellis plot compares Sales and Profit across different regions.
+    Splitting the chart by region makes it easier to identify regional differences in performance.
+    """)

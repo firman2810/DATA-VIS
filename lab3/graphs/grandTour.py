@@ -3,42 +3,21 @@ import plotly.express as px
 
 def show(df):
 
-    st.header(
-        "2.6 Grand Tour (3D Scatter)"
-    )
+    st.header("6. Grand Tour (3D Scatter)")
 
     fig = px.scatter_3d(
         df,
-        x='total_bill',
-        y='tip',
-        z='size',
-        color='day',
-        symbol='sex',
-        size='tip',
-        size_max=15,
-        opacity=0.8,
-        hover_data=[
-            'smoker',
-            'time'
-        ],
-        color_discrete_sequence=
-        px.colors.qualitative.Set2
+        x="Sales",
+        y="Profit",
+        z="Quantity",
+        color="Category",
+        hover_name="Sub-Category",
+        title="3D Grand Tour"
     )
 
-    fig.update_layout(
-        scene=dict(
-            xaxis_title='Total Bill ($)',
-            yaxis_title='Tip ($)',
-            zaxis_title='Group Size'
-        )
-    )
+    st.plotly_chart(fig, use_container_width=True)
 
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
-
-    st.write( 
-		"Rotate the chart by clicking and dragging. Zoom with the scroll wheel. " 
-		"Color represents the day, shape represents sex, and point size represents tip amount." 
-        )
+    st.write("""
+    The 3D scatter plot provides an overview of relationships between Sales,
+    Profit and Quantity simultaneously.
+    """)
