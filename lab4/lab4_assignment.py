@@ -1,0 +1,183 @@
+# source venv/Scripts/activate
+import streamlit as st
+import geopandas as gpd
+import pandas as pd
+import numpy as np
+import folium
+from streamlit_folium import folium_static
+
+
+# Page Configuration
+st.set_page_config(
+    page_title="Data Visualization Lab 4 - Assignment",
+    layout="wide"
+)
+
+
+# Generate GDP Data
+def generate_gdp_data():
+    states = [
+        "Johor",
+        "Kedah",
+        "Kelantan",
+        "Melaka",
+        "Negeri Sembilan",
+        "Pahang",
+        "Pulau Pinang",
+        "Perak",
+        "Perlis",
+        "Sabah",
+        "Sarawak",
+        "Selangor",
+        "Terengganu",
+        "Kuala Lumpur",
+        "Labuan",
+        "Putrajaya",
+        "WAKANDA",
+        "KEKANDA",
+        "MANADA",
+        "Batam"
+    ]
+
+    gdp = np.random.randint(
+        10000,
+        100000,
+        size=len(states)
+    )
+
+    return pd.DataFrame({
+        "State": states,
+        "GDP": gdp
+    })
+
+
+# Load Malaysia Map
+@st.cache_data
+def load_map():
+    return gpd.read_file("malaysia_states.json")
+
+
+# Create Choropleth Map
+def plot_map(malaysia_map, data):
+
+    m = folium.Map(
+        location=[4.2105, 101.9758],
+        zoom_start=6
+    )
+
+    choropleth = folium.Choropleth(
+        geo_data=malaysia_map,
+        name="GDP Distribution",
+        data=data,
+        columns=["State", "GDP"],
+        key_on="feature.properties.name",
+        fill_color="Blues",
+        fill_opacity=0.7,
+        line_opacity=0.2,
+        legend_name="GDP Distribution"
+    ).add_to(m)
+    
+    malaysia_map = malaysia_map.merge(
+        data,
+        left_on="name",
+        right_on="State",
+        how="left"
+    )
+
+    folium.GeoJson(
+        malaysia_map,
+        tooltip=folium.GeoJsonTooltip(
+        fields=["name", "GDP"],
+        aliases=["State:", "GDP:"],
+        localize=True
+        )   
+    ).add_to(m)
+
+    return m
+
+# Main App
+def main():
+
+    st.markdown(
+        """
+        <h1 style='text-align:center;'>
+            Malaysia GDP Distribution Map
+        </h1>
+        <h2 style='text-align:center;'>
+            by Firman 22005583
+        </h2>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.divider()
+
+    # Generate Data
+    gdp_data = generate_gdp_data()
+
+    # Sidebar Filters
+    st.sidebar.header("Filters")
+
+    selected_states = st.sidebar.multiselect(
+        "Select State(s)",
+        options=gdp_data["State"].tolist(),
+        default=gdp_data["State"].tolist()
+    )
+
+    min_gdp = st.sidebar.slider(
+        "Minimum GDP",
+        min_value=10000,
+        max_value=100000,
+        value=10000,
+        step=10000
+    )
+
+    filtered_data = gdp_data[
+        (gdp_data["State"].isin(selected_states))
+        &
+        (gdp_data["GDP"] >= min_gdp)
+    ]
+
+    st.sidebar.metric(
+        "States Displayed",
+        len(filtered_data),
+    )
+
+    # Load Map
+    malaysia_map = load_map()
+
+    # Create Filtered Map
+    folium_map = plot_map(
+        malaysia_map,
+        filtered_data
+    )
+
+    # Centered Table
+    left, center, right = st.columns([1, 3, 1])
+
+    with center:
+        st.subheader("GDP Data")
+
+        st.dataframe(
+            filtered_data,
+            use_container_width=True,
+            height=500
+        )
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+
+    # Centered Map  
+    left, center, right = st.columns([1, 3, 1])
+    with center:
+        st.subheader("GDP Distribution")
+
+        folium_static(
+            folium_map,
+            width=1000,
+            height=600
+        )
+
+
+if __name__ == "__main__":
+    main()
