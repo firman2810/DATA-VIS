@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>World Historical Events Timeline</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================================================= -->
+    <!-- Animated Background -->
+    <!-- ================================================= -->
+
+    <div class="background">
+
+        <div class="glow glow1"></div>
+
+        <div class="glow glow2"></div>
+
+        <div class="grid"></div>
+
+    </div>
+
+    <!-- ================================================= -->
+    <!-- Main Container -->
+    <!-- ================================================= -->
+
+    <div class="container">
+
+        <!-- ============================================= -->
+        <!-- Header -->
+        <!-- ============================================= -->
+
+        <header>
+
+            <h1>
+                World Historical Events Timeline
+            </h1>
+
+            <p>
+
+                Explore more than 1,000 significant historical events
+                through an interactive timeline.
+
+            </p>
+
+        </header>
+
+        <!-- ============================================= -->
+        <!-- Controls -->
+        <!-- ============================================= -->
+
+        <section class="controls">
+
+            <div class="control">
+
+                <label>Search Incident</label>
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search historical event...">
+
+            </div>
+
+            <div class="control">
+
+                <label>Country</label>
+
+                <select id="countryFilter">
+
+                    <option value="All">
+                        All Countries
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="control">
+
+                <label>Outcome</label>
+
+                <select id="outcomeFilter">
+
+                    <option value="All">
+                        All Outcomes
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button id="resetBtn">
+
+                Reset Filters
+
+            </button>
+
+        </section>
+
+        <!-- ============================================= -->
+        <!-- Summary Cards -->
+        <!-- ============================================= -->
+
+        <section class="summary">
+
+            <div class="card">
+
+                <span>Total Events</span>
+
+                <h2 id="totalEvents">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="card">
+
+                <span>Earliest Year</span>
+
+                <h2 id="earliestYear">
+                    -
+                </h2>
+
+            </div>
+
+            <div class="card">
+
+                <span>Latest Year</span>
+
+                <h2 id="latestYear">
+                    -
+                </h2>
+
+            </div>
+
+            <div class="card">
+
+                <span>Countries</span>
+
+                <h2 id="countryCount">
+                    0
+                </h2>
+
+            </div>
+
+        </section>
+
+        <!-- ============================================= -->
+        <!-- Legend -->
+        <!-- ============================================= -->
+
+        <section class="legend-wrapper">
+
+            <h3>
+
+                Timeline Legend
+
+            </h3>
+
+            <div id="legend">
+
+            </div>
+
+        </section>
+
+        <!-- ============================================= -->
+        <!-- Timeline -->
+        <!-- ============================================= -->
+
+        <section class="timeline-card">
+
+            <div class="timeline-header">
+
+                <h2>
+
+                    Interactive Historical Timeline
+
+                </h2>
+
+                <p>
+
+                    Hover over an event to view details.
+                    Use the mouse wheel to zoom and drag to pan.
+
+                </p>
+
+            </div>
+
+           <div id="timelineContainer">
+                <svg id="timeline"></svg>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- ============================================= -->
+    <!-- Tooltip -->
+    <!-- ============================================= -->
+
+    <div id="tooltip"></div>
+
+    <!-- ============================================= -->
+    <!-- JavaScript -->
+    <!-- ============================================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
