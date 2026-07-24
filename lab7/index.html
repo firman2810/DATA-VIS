@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Retro Walmart Sales Dashboard</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>WALMART SALES DASHBOARD</h1>
+            <p>FIRMAN - 22005583</p>
+        </header>
+
+        <section class="filter-panel">
+
+            <div class="filter-box">
+
+                <label>Store</label>
+
+                <select id="storeFilter">
+                    <option value="All">All Stores</option>
+                </select>
+
+            </div>
+
+            <div class="filter-box">
+
+                <label>Holiday</label>
+
+                <select id="holidayFilter">
+                    <option value="All">All Weeks</option>
+                    <option value="1">Holiday Week</option>
+                    <option value="0">Non-Holiday Week</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <section class="dashboard">
+
+            <div class="card">
+
+                <h2>Weekly Sales Trend</h2>
+
+                <div id="lineChart"></div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Store Sales Ranking</h2>
+
+                <div id="barChart"></div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Holiday vs Non-Holiday Sales</h2>
+
+                <div id="donutChart"></div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Fuel Price vs Weekly Sales</h2>
+
+                <div id="scatterPlot"></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Tooltip -->
+
+    <div id="tooltip"></div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

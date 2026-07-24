@@ -1,0 +1,222 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#161625;
+    color:white;
+    font-family:'Poppins',sans-serif;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:35px 35px;
+
+}
+
+.container{
+
+    width:95%;
+    max-width:1600px;
+    margin:auto;
+    padding:30px;
+
+}
+
+header{
+
+    text-align:center;
+    margin-bottom:35px;
+
+}
+
+header h1{
+
+    font-family:'Press Start 2P',cursive;
+    color:#FFE66D;
+    font-size:28px;
+    margin-bottom:20px;
+    text-shadow:
+        0 0 8px #FFE66D,
+        0 0 18px #FF4DA6;
+
+}
+
+header p{
+
+    color:#4DFFFF;
+    font-size:18px;
+
+}
+
+.filter-panel{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:35px;
+    flex-wrap:wrap;
+
+}
+
+.filter-box{
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+}
+
+label{
+
+    color:#FFE66D;
+    font-weight:bold;
+
+}
+
+select{
+
+    width:220px;
+
+    padding:12px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#26263A;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    box-shadow:
+    0 0 10px #9B5DE5;
+
+}
+
+select:hover{
+
+    box-shadow:
+    0 0 18px #4DFFFF;
+
+}
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(600px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:#222236;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    border:3px solid #9B5DE5;
+
+    box-shadow:
+
+    0 0 20px rgba(155,93,229,.4),
+    0 0 35px rgba(255,77,166,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+    0 0 25px #FF4DA6,
+    0 0 40px #4DFFFF;
+
+}
+
+.card h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#FFE66D;
+
+    font-size:20px;
+
+}
+
+svg{
+
+    width:100%;
+    height:auto;
+
+}
+
+#tooltip{
+
+    position:absolute;
+
+    visibility:hidden;
+
+    background:#111;
+
+    color:white;
+
+    border:2px solid #FFE66D;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    pointer-events:none;
+
+    font-size:14px;
+
+    box-shadow:
+
+    0 0 15px #FF4DA6;
+
+}
+
+.axis path,
+.axis line{
+
+    stroke:white;
+
+}
+
+text{
+
+    fill:white;
+
+}
+
+@media(max-width:900px){
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+header h1{
+
+font-size:18px;
+
+}
+
+}
