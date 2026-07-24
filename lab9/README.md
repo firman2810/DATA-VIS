@@ -140,6 +140,6 @@ This project demonstrates knowledge in:
 
 ---
 
-## 📄 License
+## License
 
 This project was developed for educational purposes as part of a university Data Visualization course.
